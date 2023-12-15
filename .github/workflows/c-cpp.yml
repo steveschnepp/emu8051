@@ -1,0 +1,21 @@
+name: 8051 C/C++ CI
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: update deps
+      run: sudo apt-get -y update
+    - name: install deps
+      run: sudo apt-get -y install libncurses-dev
+    - name: make
+      run: make
